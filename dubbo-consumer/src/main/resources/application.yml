@@ -1,0 +1,25 @@
+server:
+  port: 18802
+
+spring:
+  application:
+    name: dubbo-consumer
+
+dubbo:
+  application:            #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
+    name: dubbo-consumer
+  registry:
+    address: nacos://x.x.x:8848?namespace=dev&username=nacos&password=nacos&backup=x.x.x:8848,x.x.x:8848
+    check: false
+  consumer:
+    check: false
+  metadata-report:
+    address: nacos://x.x.x:8848?namespace=dev&username=nacos&password=nacos&backup=x.x.x:8848,x.x.x:8848
+  protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受。
+    name: dubbo
+    port: 20886
+    threadpool: fixed
+    threads: 500
+  version: 1.0.0
+  scan:
+    base-packages: cn.demo.api.*  #服务暴露与发现消费所在的package
